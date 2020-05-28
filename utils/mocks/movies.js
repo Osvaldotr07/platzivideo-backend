@@ -9,6 +9,23 @@ const movieMocks = [{"id":"9e103f9f-f8fb-430f-867e-eef145f61ec0","title":"E=mc2"
 {"id":"02b98522-9596-409a-bf8e-8d07133c9ce4","title":"Gate of Flesh (Nikutai no mon)","year":2000,"cover":"http://dummyimage.com/135x105.jpg/ff4444/ffffff","description":"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.","duration":9,"contentRating":null,"source":"https://hc360.com/et/ultrices/posuere/cubilia/curae.aspx?consequat=viverra&nulla=eget&nisl=congue&nunc=eget&nisl=semper&duis=rutrum&bibendum=nulla&felis=nunc&sed=purus&interdum=phasellus&venenatis=in&turpis=felis&enim=donec&blandit=semper&mi=sapien&in=a&porttitor=libero&pede=nam&justo=dui&eu=proin&massa=leo&donec=odio&dapibus=porttitor&duis=id&at=consequat&velit=in&eu=consequat&est=ut&congue=nulla&elementum=sed&in=accumsan&hac=felis&habitasse=ut&platea=at&dictumst=dolor&morbi=quis&vestibulum=odio&velit=consequat&id=varius&pretium=integer&iaculis=ac&diam=leo&erat=pellentesque&fermentum=ultrices&justo=mattis&nec=odio&condimentum=donec&neque=vitae&sapien=nisi&placerat=nam&ante=ultrices&nulla=libero&justo=non&aliquam=mattis&quis=pulvinar&turpis=nulla&eget=pede&elit=ullamcorper&sodales=augue&scelerisque=a&mauris=suscipit&sit=nulla&amet=elit&eros=ac&suspendisse=nulla&accumsan=sed&tortor=vel&quis=enim&turpis=sit&sed=amet&ante=nunc&vivamus=viverra&tortor=dapibus&duis=nulla&mattis=suscipit&egestas=ligula&metus=in&aenean=lacus&fermentum=curabitur&donec=at&ut=ipsum&mauris=ac&eget=tellus&massa=semper&tempor=interdum&convallis=mauris&nulla=ullamcorper&neque=purus&libero=sit&convallis=amet&eget=nulla","tags":["Drama|Romance","Drama","Comedy"]},
 {"id":"1e1b1cbc-cb21-4488-89db-0e60863e0644","title":"City of Lost Souls, The (Hyôryuu-gai)","year":2012,"cover":"http://dummyimage.com/177x248.jpg/5fa2dd/ffffff","description":"Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.","duration":71,"contentRating":null,"source":"http://ucsd.edu/neque/duis/bibendum/morbi/non/quam/nec.xml?sapien=felis&sapien=ut&non=at","tags":["Action|Comedy|Romance|War","Drama|Musical|Romance","Action","Drama|Thriller"]}]
 
+function filteredMoviesMock(tag){
+    return movieMocks.filter(movie => movie.tags.includes(tag))
+}
+
+class MovieServerMock {
+    async getMovies() {
+        return Promise.resolve(movieMocks)
+    }
+    
+    async createMovie() {
+        return Promise.resolve(movieMocks[0])
+    }
+}
+
+
 module.exports = {
-    movieMocks
+    movieMocks,
+    filteredMoviesMock,
+    MovieServerMock
 }
