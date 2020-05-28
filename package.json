@@ -7,7 +7,9 @@
     "dev": "DEBUG=app:* nodemon index",
     "start": "NODE_ENV=production node index",
     "inspect": "DEBUG=app:* nodemon --inspect index",
-    "test": "mocha ./utils/test/routes.movies.test.js"
+    "test": "mocha ./utils/test/",
+    "cover": "nyc npm run test",
+    "report": "nyc report --reporter=html && open ./coverage/index.html"
   },
   "keywords": [],
   "author": "",
@@ -40,5 +42,9 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
+  },
+  "nyx": {
+    "all": true,
+    "include": ["routes", "service", "lib", "utils"]
   }
 }
